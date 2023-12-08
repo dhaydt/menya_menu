@@ -41,4 +41,10 @@ class Detail extends Component
     public function mount($id){
         $this->order_id = $id;
     }
+
+    public function pay_now($order_id){
+        session()->put('order_id', $order_id);
+    
+        $this->redirect(route('pay_now'));
+    }
 }

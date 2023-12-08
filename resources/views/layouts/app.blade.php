@@ -422,6 +422,12 @@
       text-decoration: none;
       color: unset;
     }
+
+    .payment-information .form-check.bg-lights{
+      background-color: #fff !important;
+      border: 1px solid #dfdfdf;
+      border-radius: 4px;
+    }
   </style>
 
   @livewireStyles

@@ -59,8 +59,6 @@ class Index extends Component
         }else{
             $this->redirect(route('not_found'));
         }
-
-
     }
 
     public function confirmPayment(){
@@ -85,6 +83,15 @@ class Index extends Component
             Helpers::generateOrder();
             
             $this->redirect(route('order_success'));
+        }else{
+            $order_id = Helpers::generateOrder();
+
+            if($order_id){
+                session()->put('order_id', $order_id);
+    
+                $this->redirect(route('pay_now'));
+            }
+
         }
 
         // dd($this->payment, $this->name, $this->phone);

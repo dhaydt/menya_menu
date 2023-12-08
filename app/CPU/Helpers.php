@@ -118,12 +118,8 @@ class Helpers
     $phone = session()->get('phone');
     $paymeny_type = session()->get('payment');
     $order_type = session()->get('type');
-
-    if ($paymeny_type == 'now') {
-      $payment_status = 'paid';
-    } else {
-      $payment_status = 'unpaid';
-    }
+    
+    $payment_status = 'unpaid';
 
     $order_id = Helpers::generateOrderId('LT', count(Order::all()) + 1);
 
@@ -162,6 +158,8 @@ class Helpers
     }
 
     Helpers::emptyCart();
+
+    return $order_id;
   }
 
   public static function emptyCart()

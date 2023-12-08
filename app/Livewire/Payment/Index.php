@@ -43,6 +43,10 @@ class Index extends Component
 
         $group = CartGroup::where('table_id', $this->table)->first();
 
+        if(!$group){
+            Helpers::notfound();
+        }
+
         $this->subtotal = $group['total'] - $group['tax'] - $group['service_charge'];
 
         $this->total = $group['total'];

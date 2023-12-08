@@ -177,10 +177,18 @@
     </div>
 
     <div class="next-wrapper mb-3 mt-5 px-2 d-flex align-items-center justify-content-center">
-        @if ($order['order_status'] == 'waiting' && $order['payment_type'] == 'later')
-        <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn">PAY NOW</a>
+        @if ($order['payment_type'] == 'later')
+            @if ($order['order_status'] == 'process' && $order['payment_type'] == 'later' && $order['payment_status'] == 'unpaid')
+                <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn">PAY NOW</a>
+            @else
+                <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn">BACK TO HOME</a>
+            @endif           
         @else
-        <a href="javascript:" wire:click="generateOrder" class="next-btn">BACK TO HOME</a>
+            @if($order['payment_status'] == 'unpaid')
+                <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn">PAY NOW</a>
+            @else
+                <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn">BACK TO HOME</a>
+            @endif
         @endif
     </div>
 </div>

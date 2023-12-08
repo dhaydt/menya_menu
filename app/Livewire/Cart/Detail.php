@@ -31,43 +31,49 @@ class Detail extends Component
         $table = Helpers::getTable();
         $group = CartGroup::where('table_id', $table)->get();
 
-        $this->note = $group[0]['note'];
-
-        
-        foreach ($group as $g) {
-
-            
-            $item = $g['cart'];
-
-            if (count($item) < 1) {
-                $this->dispatch('emptyCart', 0, 'Cart is empty!');
+        if(count($group) > 0){
+            $this->note = $group[0]['note'];
     
-                $this->redirectRoute('menu', ['type' => session()->get('type')]);
-            }
-
-            foreach ($item as $i) {
-                if ($i['parent_id'] == 0) {
-                    $topping = Cart::where(['group_id' => $g['group_id'], 'parent_id' => $i['food_id']])->get();
-
-                    $tgropu = [];
-                    
-                    foreach ($topping as $t) {
-                        $tgropu[$t['id']] = [
-                            'name' => $t['food']['name'] ?? 'Invalid data',
-                            'qty' => $t['qty'],
-                            'price' => $t['price'],
+    
+            
+            foreach ($group as $g) {
+    
+                
+                $item = $g['cart'];
+    
+                if (count($item) < 1) {
+                    $this->dispatch('emptyCart', 0, 'Cart is empty!');
+        
+                    $this->redirectRoute('menu', ['type' => session()->get('type')]);
+                }
+    
+                foreach ($item as $i) {
+                    if ($i['parent_id'] == 0) {
+                        $topping = Cart::where(['group_id' => $g['group_id'], 'parent_id' => $i['food_id']])->get();
+    
+                        $tgropu = [];
+                        
+                        foreach ($topping as $t) {
+                            $tgropu[$t['id']] = [
+                                'name' => $t['food']['name'] ?? 'Invalid data',
+                                'qty' => $t['qty'],
+                                'price' => $t['price'],
+                            ];
+                        }
+                        
+                        $this->cart[$i['id']] = [
+                            'name' => $i['food']['name'],
+                            'qty' => $i['qty'],
+                            'price' => $i['price'],
+                            'topping' => $tgropu
                         ];
                     }
-                    
-                    $this->cart[$i['id']] = [
-                        'name' => $i['food']['name'],
-                        'qty' => $i['qty'],
-                        'price' => $i['price'],
-                        'topping' => $tgropu
-                    ];
                 }
             }
+        }else{
+            $this->redirect(route('not_found'));
         }
+
     }
 
     public function resetSubTotal(){

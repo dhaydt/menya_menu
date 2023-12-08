@@ -43,22 +43,23 @@ class Index extends Component
 
         $group = CartGroup::where('table_id', $this->table)->first();
 
-        if(!$group){
-            Helpers::notfound();
+        if($group){
+            $this->subtotal = $group['total'] - $group['tax'] - $group['service_charge'];
+    
+            $this->total = $group['total'];
+            
+            $this->tax = $group['tax'];
+            
+            $this->service = $group['service_charge'];
+            
+            $this->type = $group['order_type'];
+            
+            $this->taxPercent = '11 %';
+            $this->text = 'CONFIRM';
+        }else{
+            $this->redirect(route('not_found'));
         }
 
-        $this->subtotal = $group['total'] - $group['tax'] - $group['service_charge'];
-
-        $this->total = $group['total'];
-
-        $this->tax = $group['tax'];
-
-        $this->service = $group['service_charge'];
-
-        $this->type = $group['order_type'];
-
-        $this->taxPercent = '11 %';
-        $this->text = 'CONFIRM';
 
     }
 

@@ -52,3 +52,6 @@ Route::get('/payment-method', [PageController::class, 'payment_method'])->name('
 Route::get('/order-success', [PageController::class, 'order_success'])->name('order_success');
 Route::get('/bill-list', [PageController::class, 'bill_list'])->name('bill');
 Route::get('/detail-order/{id}', [PageController::class, 'detail_order'])->name('detail_order');
+Route::get('/not_found', function(){
+    return view('welcome');
+})->name('not_found');

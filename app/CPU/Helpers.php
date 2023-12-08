@@ -14,9 +14,6 @@ use Carbon\Carbon;
 
 class Helpers
 {
-  public static function notfound(){
-    return redirect()->route('menu', ['type' => session()->get('type')]);
-  }
   public static function getOutletPrice($id){
     $table_id = Helpers::getTableId();
     $table = Table::find($table_id);

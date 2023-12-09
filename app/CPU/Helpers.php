@@ -87,7 +87,7 @@ class Helpers
 
   public static function getBackendUrl($data)
   {
-    $img = env('BACKEND_URL') . '/storage/' . $data;
+    $img = env('BACKEND_URL', 'https://dashboard.menyasakura.my.id') . '/storage/' . $data;
 
     return $img;
   }

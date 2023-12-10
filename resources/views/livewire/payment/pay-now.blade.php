@@ -5,14 +5,14 @@
         </div>
         <div class="form-check bg-lights">
             <label class="form-check-label w-100" for="now">
-                QRIS
+                <img src="{{ asset('assets/images/qris.png') }}" height="20px" alt="qris">
                 <input class="form-check-input" type="radio" name="payment_method" id="now" value="QRIS"
                     wire:model="payment">
             </label>
         </div>
         <div class="form-check bg-lights mt-2">
             <label class="form-check-label w-100" for="later">
-                BCA
+                <img src="{{ asset('assets/images/bca.png') }}" height="20px" alt="bca">
                 <input class="form-check-input" type="radio" name="payment_method" id="later" value="BCA"
                     wire:model="payment">
             </label>

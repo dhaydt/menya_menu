@@ -137,7 +137,7 @@
     /* Catgeory food item */
     .card.item-category-card{
       border-radius: 20px;
-      border: none;
+      border: 1px solid #b2b2b2;
       text-decoration: none;
       color: unset;
     }
@@ -151,6 +151,7 @@
       font-size: 14px;
       text-transform: capitalize;
       font-weight: 600;
+      line-height: 1.3;
     }
     .food-price {
       font-size: 14px;
@@ -159,6 +160,13 @@
     }
     .carousel-foods .owl-stage-outer{
       padding-bottom: 10px;
+    }
+
+    .card-category-description{
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     /* page welocme */

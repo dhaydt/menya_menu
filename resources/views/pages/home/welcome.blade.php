@@ -7,6 +7,9 @@
           WELCOME
         </h3>
       </div>
+      <div class="img-wrapper pt-4 text-center">
+        <img src="{{ asset('assets/images/logo.png') }}" height="60px" alt="">
+      </div>
       <div class="page-content text-center">
         <h6>Please Choose</h6>
         <div class="d-flex align-items-center justify-content-evenly mt-3">

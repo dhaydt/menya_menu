@@ -177,7 +177,7 @@
     }
 
     .page-welcome .page-content{
-      padding-top: 15vh;
+      padding-top: 10vh;
     }
 
     .page-content h6{

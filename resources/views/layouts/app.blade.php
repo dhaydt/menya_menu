@@ -436,6 +436,31 @@
       border: 1px solid #dfdfdf;
       border-radius: 4px;
     }
+
+    /* category */
+    .item-category img{
+      border-radius: 6px;
+    }
+
+    .description-category .text-content{
+      font-size: 14px;
+      color: #393939;
+      font-weight: 500
+    }
+    
+    .description-category .text-price{
+      font-size: 14px;
+      font-weight: 600;
+      color: #393939;
+    }
+    .description-category .text-btn{
+      background: #000;
+      color: #fff;
+      padding: 3px 13px;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
   </style>
 
   @livewireStyles

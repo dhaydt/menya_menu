@@ -12,7 +12,7 @@
             {{ $f['name'] }}
           </div>
           <div class="food-price">
-            IDR. {{ number_format($f['price']) }}
+            IDR. {{ number_format(\App\CPU\Helpers::getOutletPrice($f['id'])) }}
           </div>
         </div>
       </div>

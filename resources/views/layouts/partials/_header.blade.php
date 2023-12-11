@@ -22,7 +22,7 @@
     </a>
   </div>
 </div>
-@elseif($route == 'detail_menu' || $route == 'cart_detail' || $route == 'payment-method' || $route == 'order_success' || $route == 'detail_order' || $route == 'bill' || $route == 'pay_now')
+@elseif($route == 'detail_menu' || $route == 'cart_detail' || $route == 'payment-method' || $route == 'order_success' || $route == 'detail_order' || $route == 'bill' || $route == 'pay_now' || $route == 'category')
 <div class="nav-header d-flex justify-content-between nav-pages">
   <div class="header-title d-flex align-items-center justify-content-center ps-3">
     {{-- <a href="{{ route('menu', ['type' => session()->get('type')]) }}" class="back-btn me-3 position-relative counter-anchor"> --}}

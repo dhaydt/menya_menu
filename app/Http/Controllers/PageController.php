@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CPU\Helpers;
+use App\Models\Category;
 use App\Models\Food;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -43,6 +44,21 @@ class PageController extends Controller
             $data['id'] = $id;
 
             return view('pages.details.index', $data);
+        }
+
+        return view('welcome');
+    }
+    
+    public function category($id)
+    {
+        $table = Helpers::getTable();
+        $category = Category::find($id);
+
+        if ($table) {
+            $data['title'] = $category['category'];
+            $data['id'] = $id;
+
+            return view('pages.category.index', $data);
         }
 
         return view('welcome');

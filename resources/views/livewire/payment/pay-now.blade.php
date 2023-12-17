@@ -18,7 +18,7 @@
             </label>
         </div>
         <div class="next-wrapper mb-3 mt-5 px-2 d-flex align-items-center justify-content-center">
-            <a href="javascript:" wire:click="generateInvoice" class="next-btn">CONFIRM PAYMENT</a>
+            <a href="javascript:" wire:click="generateInvoice" class="next-btn" onclick="showLoading()">CONFIRM PAYMENT</a>
         </div>
     </div>
 </div>

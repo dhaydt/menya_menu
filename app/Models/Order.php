@@ -29,6 +29,7 @@ class Order extends Model
         'service_charge',
         'total',
         'outlet_id',
+        'note',
         'on_going',
     ];
 

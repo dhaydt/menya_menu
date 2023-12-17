@@ -1,7 +1,7 @@
 <div>
     <div class="container pt-2 pb-3">
         @foreach ($bill as $b)
-        <a href="{{ route('detail_order', ['id' => $b['id'] ]) }}" class="row py-3 bill-card mt-2 shadow-sm">
+        <a href="{{ route('detail_order', ['id' => $b['id'] ]) }}" class="row py-3 bill-card mt-2 shadow-sm" onclick="showLoading()">
             <div class="row">
                 <div class="col">
                     <div class="d-flex justify-content-between align-items-center">

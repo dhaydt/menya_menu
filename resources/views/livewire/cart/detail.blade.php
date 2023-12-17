@@ -130,7 +130,7 @@
         </div>
     </div>
     <div class="next-wrapper mb-3 mt-5 px-2 d-flex align-items-center justify-content-center">
-        <a href="javascript:" wire:click="generateOrder" class="next-btn">NEXT</a>
+        <a href="javascript:" wire:click="generateOrder" class="next-btn" onclick="showLoading()">NEXT</a>
     </div>
 </div>
 @push('scripts')

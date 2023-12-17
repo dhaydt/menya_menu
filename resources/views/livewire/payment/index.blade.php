@@ -84,7 +84,7 @@
                             <button wire:click="cancelConfirm" type="button" class="btn btn-sm btn-outline-secondary w-100" data-bs-dismiss="modal">CANCEL</button>
                         </div>
                         <div class="col">
-                            <button type="button" wire:click="generateOrder" class="btn-yes btn btn-sm btn-primary w-100">YES</button>
+                            <button type="button" wire:click="generateOrder" class="btn-yes btn btn-sm btn-primary w-100" onclick="showLoading()">YES</button>
                         </div>
                     </div>
                 </div>

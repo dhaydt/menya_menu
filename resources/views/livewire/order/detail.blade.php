@@ -179,15 +179,15 @@
     <div class="next-wrapper mb-3 mt-5 px-2 d-flex align-items-center justify-content-center">
         @if ($order['payment_type'] == 'later')
             @if ($order['order_status'] == 'process' && $order['payment_type'] == 'later' && $order['payment_status'] == 'unpaid')
-                <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn">PAY NOW</a>
+                <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn" onclick="showLoading()">PAY NOW</a>
             @else
-                <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn">BACK TO HOME</a>
+                <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn" onclick="showLoading()">BACK TO HOME</a>
             @endif           
         @else
             @if($order['payment_status'] == 'unpaid')
-                <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn">PAY NOW</a>
+                <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn" onclick="showLoading()">PAY NOW</a>
             @else
-                <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn">BACK TO HOME</a>
+                <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn" onclick="showLoading()">BACK TO HOME</a>
             @endif
         @endif
     </div>

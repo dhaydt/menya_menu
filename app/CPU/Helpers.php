@@ -39,6 +39,7 @@ class Helpers
 
     
   }
+  
   public static function getOutlet($id){
     $outlet = Outlet::find($id);
 
@@ -140,6 +141,7 @@ class Helpers
       $order->service_charge = $group['service_charge'];
       $order->total = $group['tax'] + $group['service_charge'] + $group['total'];
       $order->outlet_id = $table['outlet_id'];
+      $order->note = $group['note'];
       $order->on_going = 1;
 
       foreach ($group['cart'] as $c) {

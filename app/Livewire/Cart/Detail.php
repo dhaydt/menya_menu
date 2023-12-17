@@ -160,6 +160,7 @@ class Detail extends Component
 
         $group = CartGroup::where('table_id', $table)->first();
         $group->total = $total;
+        $group->note = $this->note;
         $group->save();
 
         foreach ($this->cart as $k => $c) {

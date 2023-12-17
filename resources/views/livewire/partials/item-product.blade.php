@@ -1,7 +1,7 @@
 <div class="carousel-foods">
   <div class="owl-carousel owl-theme owl-food-{{ $item['id'] }}">
     @foreach ($item['foods'] as $f)
-    <a href="{{ route('detail_menu', ['id' => $f['id']]) }}" class="card item-category-card p-0 shadow-sm">
+    <a href="{{ route('detail_menu', ['id' => $f['id']]) }}" class="card item-category-card p-0 shadow-sm" onclick="showLoading()">
       <div class="card-body p-0">
         <div class="card-category-wrapper">
           <img class="h-100" src="{{ \App\CPU\Helpers::getBackendUrl($f['image']) }}"

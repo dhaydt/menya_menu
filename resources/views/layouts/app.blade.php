@@ -461,6 +461,17 @@
       font-size: 14px;
       line-height: 1.6;
     }
+    .loading-wrapper{
+      position: absolute;
+      top: 45%;
+      left: 45%;
+      height: 60px;
+      z-index: 999;
+    }
+
+    .hide{
+      display: none;
+    }
   </style>
 
   @livewireStyles
@@ -469,6 +480,9 @@
 <body>
   @php($route = \Request::route()->getName())
   <div class="container">
+    <div class="loading-wrapper hide">
+      <img src="{{ asset('assets/images/loading.gif') }}" height="100%" alt="">
+    </div>
     <div class="row justify-content-center">
       <div class="main-container">
         @if ($route != 'welcome')
@@ -491,7 +505,19 @@
 
   @livewireScripts
   @stack('scripts')
+  <script>
+    $(document).ready(function(){
+      hideLoading()
+    });
 
+    function showLoading(){
+      $('.loading-wrapper').removeClass('hide');
+    }
+    
+    function hideLoading(){
+      $('.loading-wrapper').addClass('hide');
+    }
+  </script>
 </body>
 
 </html>

@@ -101,7 +101,7 @@
                 Sub total
             </div>
             <div class="price">
-                IDR. {{ array_sum($subtotal['subtotal']) }}
+                IDR. {{ number_format(array_sum($subtotal['subtotal'])) }}
             </div>
         </div>
         <div class="d-flex justify-content-end baris-harga">
@@ -109,7 +109,7 @@
                 Tax ({{ $subtotal['tax'] }} %)
             </div>
             <div class="price">
-                IDR. {{ \App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal']))  }}
+                IDR. {{ number_format(\App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal'])))  }}
             </div>
         </div>
         <div class="d-flex justify-content-end baris-harga">
@@ -117,7 +117,7 @@
                 Service Charge
             </div>
             <div class="price">
-                IDR. {{ $subtotal['service'] }}
+                IDR. {{ number_format($subtotal['service']) }}
             </div>
         </div>
         <div class="d-flex justify-content-end baris-harga">
@@ -125,7 +125,7 @@
                 Total
             </div>
             <div class="price fw-bold">
-                IDR. {{ array_sum($subtotal['subtotal']) + \App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal'])) + $subtotal['service'] }}
+                IDR. {{ number_format(array_sum($subtotal['subtotal']) + \App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal'])) + $subtotal['service']) }}
             </div>
         </div>
     </div>

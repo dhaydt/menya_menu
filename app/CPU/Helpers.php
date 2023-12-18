@@ -4,6 +4,7 @@ namespace App\CPU;
 
 use App\Models\Cart;
 use App\Models\CartGroup;
+use App\Models\Config;
 use App\Models\Food;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -14,6 +15,10 @@ use Carbon\Carbon;
 
 class Helpers
 {
+  public static function getTax($tax, $total){
+    $hasil = $tax/100 * $total;
+    return $hasil;
+  }
   public static function getOutletPrice($id){
     $table_id = Helpers::getTableId();
     $table = Table::find($table_id);
@@ -139,7 +144,7 @@ class Helpers
       $order->customer_phone = $phone;
       $order->tax = $group['tax'];
       $order->service_charge = $group['service_charge'];
-      $order->total = $group['tax'] + $group['service_charge'] + $group['total'];
+      $order->total = $group['total'];
       $order->outlet_id = $table['outlet_id'];
       $order->note = $group['note'];
       $order->on_going = 1;
@@ -179,5 +184,11 @@ class Helpers
       }
       $g->delete();
     }
+  }
+
+  public static function getConfig($type){
+    $config = Config::where('type', $type)->first();
+
+    return $config;
   }
 }

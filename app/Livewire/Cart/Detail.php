@@ -13,6 +13,8 @@ class Detail extends Component
     protected $listeners = ['generateOrder','deleteFoods', 'deleteToppings', 'calculate','addQtyFoods', 'minQtyFoods', 'addQtyTopping', 'minQtyTopping','refreshCart' => '$refresh'];
 
     public $cart = [];
+    public $tax = 0;
+    public $service = 0;
     public $subtotal = [
         'subtotal' => [],
         'tax' => 0,
@@ -30,6 +32,13 @@ class Detail extends Component
 
         $table = Helpers::getTable();
         $group = CartGroup::where('table_id', $table)->get();
+
+        $this->tax = Helpers::getConfig('tax')['value'] ?? 0;
+        $this->service = Helpers::getConfig('service_charge')['value'] ?? 0;
+
+        $this->subtotal['tax'] = $this->tax;
+        $this->subtotal['service'] = $this->service;
+        
 
         if(count($group) > 0){
             $this->note = $group[0]['note'];
@@ -79,8 +88,8 @@ class Detail extends Component
     public function resetSubTotal(){
         $this->subtotal = [
             'subtotal' => [],
-            'tax' => 0,
-            'service' => 0,
+            'tax' => $this->tax,
+            'service' => $this->service,
             'total' => 0
         ];
     }
@@ -154,13 +163,15 @@ class Detail extends Component
 
     public function generateOrder(){
 
-        $total = array_sum($this->subtotal['subtotal']) + $this->subtotal['service'] + $this->subtotal['tax'];
+        $total = array_sum($this->subtotal['subtotal']) + $this->service + Helpers::getTax($this->tax, array_sum($this->subtotal['subtotal']));
 
         $table = Helpers::getTable();
 
         $group = CartGroup::where('table_id', $table)->first();
         $group->total = $total;
         $group->note = $this->note;
+        $group->tax = Helpers::getTax($this->tax, array_sum($this->subtotal['subtotal']));
+        $group->service_charge = $this->service;
         $group->save();
 
         foreach ($this->cart as $k => $c) {

@@ -137,25 +137,30 @@
 <script>
     $(document).ready(function(){
         Livewire.dispatch('calculate');
+        @this.dispatch('getData');
     })
 
     Livewire.on("emptyCart", (status) => {        
         alertMessage(status)
+        @this.dispatch('getData');
     })
 
     Livewire.on('deleteFood', (id)=>{
         console.log('id', id);
         @this.dispatch('deleteFoods', {key : id});
+        location.href = `{{ route('cart_detail') }}`;
     })
     
     Livewire.on('deleteTopping', (id)=>{
         console.log('id', id);
         @this.dispatch('deleteToppings', {key : id});
+        @this.dispatch('getData');
     })
 
     Livewire.on("deleteCart", (status) => {  
         @this.dispatch('refreshCart');
         alertMessage(status)
+        @this.dispatch('getData');
     })
 </script>
 @endpush

@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class Detail extends Component
 {
-    protected $listeners = ['generateOrder','deleteFoods', 'deleteToppings', 'calculate','addQtyFoods', 'minQtyFoods', 'addQtyTopping', 'minQtyTopping','refreshCart' => '$refresh'];
+    protected $listeners = ['getData','generateOrder','deleteFoods', 'deleteToppings', 'calculate','addQtyFoods', 'minQtyFoods', 'addQtyTopping', 'minQtyTopping','refreshCart' => '$refresh'];
 
     public $cart = [];
     public $tax = 0;
@@ -29,7 +29,9 @@ class Detail extends Component
     }
 
     public function mount(){
+    }
 
+    public function getData(){
         $table = Helpers::getTable();
         $group = CartGroup::where('table_id', $table)->get();
 
@@ -82,7 +84,6 @@ class Detail extends Component
         }else{
             $this->redirect(route('not_found'));
         }
-
     }
 
     public function resetSubTotal(){

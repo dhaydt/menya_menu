@@ -56,6 +56,7 @@ Route::get('/detail-order/{id}', [PageController::class, 'detail_order'])->name(
 Route::get('/pay_now', [PageController::class, 'pay_now'])->name('pay_now');
 Route::get('/generateInvoice', [PageController::class, 'generateInvoice'])->name('generateInvoice');
 Route::get('/xendit-payment/success/{type}/{order_id}', [PageController::class, 'payment_success'])->name('payment_success');
+Route::get('/request_payment/{id}', [PageController::class, 'request_payment'])->name('request_payment');
 
 
 Route::get('/not_found', function(){

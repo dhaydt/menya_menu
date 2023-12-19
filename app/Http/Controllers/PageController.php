@@ -228,4 +228,22 @@ class PageController extends Controller
 
         return view('welcome');
     }
+    
+    public function request_payment($id)
+    {
+        $table = Helpers::getTableId();
+
+        $order = Order::find($id);
+
+        $table = Helpers::getTable();
+
+        if ($table && $order) {
+            $data['title'] = "Request Payment";
+            $data['order_id'] = $id;
+
+            return view('pages.order.detail', $data);
+        }
+
+        return view('welcome');
+    }
 }

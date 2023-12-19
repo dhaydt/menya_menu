@@ -1,10 +1,17 @@
 <div>
     <div class="container">
+        @php($route = \Request::route()->getName())
+        @if ($route == 'request_payment')
+        <div class="font-description text-capitalize py-3">
+            Please Information Cashier To Your Order Detail & Payment Option
+        </div>
+        @else
         <div class="font-description text-capitalize py-3">
             {{ $outlet['name'] }} <br>
             {{ $outlet['address'] }} <br>
             No. Contact : {{ $outlet['phone'] }}
         </div>
+        @endif
 
         <div class="border-line dashed"></div>
 
@@ -177,9 +184,12 @@
     </div>
 
     <div class="next-wrapper mb-3 mt-5 px-2 d-flex align-items-center justify-content-center">
+        @if($route == 'request_payment')
+            <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn" onclick="showLoading()">BACK TO HOME</a>
+        @else
         @if ($order['payment_type'] == 'later')
-            @if ($order['order_status'] !== 'waiting' && $order['payment_type'] == 'later' && $order['payment_status'] == 'unpaid')
-                <a href="javascript:" wire:click="pay_now(`{{ $order['id'] }}`)" class="next-btn" onclick="showLoading()">REQUEST PAYMENT</a>
+            @if ($order['order_status'] !== 'waiting' && $order['payment_status'] == 'unpaid')
+                <a href="{{ route('request_payment', ['id' => $order['id']]) }}" class="next-btn" onclick="showLoading()">REQUEST PAYMENT</a>
             @else
                 <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn" onclick="showLoading()">BACK TO HOME</a>
             @endif           
@@ -189,6 +199,7 @@
             @else
                 <a href="{{ route('menu', ['type' => 'dine_in']) }}" wire:click="generateOrder" class="next-btn" onclick="showLoading()">BACK TO HOME</a>
             @endif
+        @endif
         @endif
     </div>
 </div>

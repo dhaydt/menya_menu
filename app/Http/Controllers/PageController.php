@@ -132,7 +132,7 @@ class PageController extends Controller
                 ];
     
                 // dd($user);
-                $redirect_url = env('APP_URL') ? env('APP_URL') : 'http://frontendcafe.test';
+                $redirect_url = env('APP_URL') ? env('APP_URL') : 'https://menyasakura.my.id';
     
                 $params = [
                     'external_id' => $tran,

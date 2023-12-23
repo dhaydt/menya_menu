@@ -472,6 +472,17 @@
     .hide{
       display: none;
     }
+    .home-btn{
+      position: absolute;
+      right: 0;
+      top: 13px;
+      margin-top: auto;
+      margin-bottom: auto;
+      color: #222121;
+    }
+    a {
+        text-decoration: none !important;
+    }
   </style>
 
   @livewireStyles

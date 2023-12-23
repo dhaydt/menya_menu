@@ -41,5 +41,6 @@
     </a>
   </div>
   @endif
+  <a href="{{ route('menu', ['type' => session()->get('type')]) }}" onclick="showLoading()" class="home-btn me-3 home-btn"><i class="fa-solid fa-home"></i></a>
 </div>
 @endif

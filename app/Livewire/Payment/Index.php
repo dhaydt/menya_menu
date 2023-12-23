@@ -89,11 +89,14 @@ class Index extends Component
             if($order_id){
                 session()->put('order_id', $order_id);
     
-                $this->redirect(route('pay_now'));
+                // $this->redirect(route('pay_now'));
+
+                session()->put('payment_method', 'QRIS');
+
+                $this->redirect(route('generateInvoice'));
             }
 
         }
 
-        // dd($this->payment, $this->name, $this->phone);
     }
 }

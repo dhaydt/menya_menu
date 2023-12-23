@@ -35,10 +35,7 @@ class Helpers
 
         return $food['price'];
       }
-
-
     }else{
-
       return view('welcome');
     }
 
@@ -105,9 +102,9 @@ class Helpers
     return substr(str_shuffle(str_repeat($pool, 5)), 0, $length);
   }
 
-  public static function generateOrderId($initial, $id)
+  public static function generateOrderId($initial, $date, $id)
   {
-    $code = $initial . str_pad($id, 6, "0", STR_PAD_LEFT);
+    $code = $initial . $date . str_pad($id, 6, "0", STR_PAD_LEFT);
 
     return $code;
   }
@@ -127,7 +124,19 @@ class Helpers
     
     $payment_status = 'unpaid';
 
-    $order_id = Helpers::generateOrderId('LT', count(Order::all()) + 1);
+    $outlet = Outlet::find($table['outlet_id']);
+    $date = date('dmY');
+
+    if($outlet){
+      $outlet_code = $outlet['code_order'] ?? 'LT';
+      $order_counter = Order::where('outlet_id', $outlet['id'])->whereDate('created_at', date('Y-m-d'))->get()->count();
+
+      $order_id = Helpers::generateOrderId($outlet_code, date('dmY'), $order_counter + 1);
+    }else{
+      $outlet_code = 'LT';
+      $order_id = Helpers::generateOrderId('LT', $date, count(Order::all()) + 1);
+    }
+
 
 
     if ($group && $table) {

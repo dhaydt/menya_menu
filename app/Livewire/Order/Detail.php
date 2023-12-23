@@ -44,7 +44,11 @@ class Detail extends Component
 
     public function pay_now($order_id){
         session()->put('order_id', $order_id);
-    
-        $this->redirect(route('pay_now'));
+
+        // $this->redirect(route('pay_now'));
+
+        session()->put('payment_method', 'QRIS');
+
+        $this->redirect(route('generateInvoice'));
     }
 }

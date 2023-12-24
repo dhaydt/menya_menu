@@ -15,10 +15,14 @@
         $(".owl-category").owlCarousel({
             items: 4,
             margin: 10,
-            loop: false,
+            loop: true,
             dots: true,
             autoplay: false,
-            autoHeight:true
+            autoHeight:true,
+            dotsEach:true,
+            lazyLoad:true,
+            slideBy:2,
+            slideTransition: 'linear'
         });
     });
 </script>

@@ -15,6 +15,26 @@ use Carbon\Carbon;
 
 class Helpers
 {
+  public static function getTaxOutlet(){
+    $table_code = Helpers::getTable();
+
+    $table = Table::where('token', $table_code)->first();
+
+    $tax = Outlet::find($table['outlet_id'])['tax'];
+    
+    return $tax;
+  }
+  
+  public static function getServiceOutlet(){
+    $table_code = Helpers::getTable();
+
+    $table = Table::where('token', $table_code)->first();
+    
+    $service = Outlet::find($table['outlet_id'])['service_charge'];
+
+    return $service;
+  }
+
   public static function getTax($tax, $total){
     $hasil = $tax/100 * $total;
     return $hasil;
@@ -69,9 +89,9 @@ class Helpers
     }
     return $formatted;
   }
+
   public static function getTable()
   {
-
     return session()->get('table');
   }
 
@@ -171,6 +191,8 @@ class Helpers
       }
 
       $order->save();
+
+      session()->put('order_id', $order_id);
     }
 
     Helpers::emptyCart();

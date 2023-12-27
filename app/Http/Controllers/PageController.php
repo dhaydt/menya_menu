@@ -202,7 +202,8 @@ class PageController extends Controller
 
             $table = Helpers::getTableId();
 
-            $order = Order::where(['table_id' => $table, 'on_going' => 1])->orderBy('created_at', 'desc')->first();
+            $order = Order::where(['table_id' => $table, 'on_going' => 1])->whereDate('created_at', date('Y-m-d'))->orderBy('updated_at', 'desc')->first();
+            // dd($order);
             $data['order_id'] = $order['id'];
 
             return view('pages.order.index', $data);

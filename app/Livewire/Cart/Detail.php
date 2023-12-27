@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\Models\Cart;
 use App\Models\CartGroup;
 use App\Models\Order;
+use App\Models\Outlet;
 use Livewire\Component;
 
 class Detail extends Component
@@ -35,8 +36,9 @@ class Detail extends Component
         $table = Helpers::getTable();
         $group = CartGroup::where('table_id', $table)->get();
 
-        $this->tax = Helpers::getConfig('tax')['value'] ?? 0;
-        $this->service = Helpers::getConfig('service_charge')['value'] ?? 0;
+        $this->tax = Helpers::getTaxOutlet() ?? Helpers::getConfig('tax')['value'];
+
+        $this->service = Helpers::getServiceOutlet() ?? Helpers::getConfig('service_charge')['value'];
 
         $this->subtotal['tax'] = $this->tax;
         $this->subtotal['service'] = $this->service;
@@ -81,6 +83,7 @@ class Detail extends Component
                     }
                 }
             }
+            $this->calculate();
         }else{
             $this->redirect(route('not_found'));
         }

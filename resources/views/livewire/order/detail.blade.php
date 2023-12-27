@@ -147,7 +147,7 @@
             </div>
             <div class="d-flex justify-content-between baris-harga">
                 <div class="name me-3">
-                    Tax (11%)
+                    Tax ({{ \App\CPU\Helpers::getTaxOutlet() }}%)
                 </div>
                 <div class="price">
                     IDR. {{ $order['tax'] }}

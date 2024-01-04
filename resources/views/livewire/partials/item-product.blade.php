@@ -1,4 +1,4 @@
-<div class="carousel-foods">
+<div class="carousel-foods" wire:ignore>
   <div class="owl-carousel owl-theme owl-food-{{ $item['id'] }}">
     @foreach ($item['foods'] as $f)
     <a href="{{ route('detail_menu', ['id' => $f['id']]) }}" class="card item-category-card p-0 shadow-sm" onclick="showLoading()">
@@ -24,11 +24,11 @@
 <script>
     $(document).ready(function(){
         $(".owl-food-" + `{{ $item['id'] }}`).owlCarousel({
-            items: 1.8,
+            items: 1.9,
             margin: 10,
-            loop: false,
+            loop: true,
             dots: false,
-            autoplay: false,
+            autoplay: false, 
             autoHeight:true
         });
     });

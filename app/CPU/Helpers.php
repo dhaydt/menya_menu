@@ -124,7 +124,7 @@ class Helpers
 
   public static function generateOrderId($initial, $date, $id)
   {
-    $code = $initial . $date . str_pad($id, 6, "0", STR_PAD_LEFT);
+    $code = $initial . str_pad($id, 6, "0", STR_PAD_LEFT);
 
     return $code;
   }
@@ -149,7 +149,7 @@ class Helpers
 
     if($outlet){
       $outlet_code = $outlet['code_order'] ?? 'LT';
-      $order_counter = Order::where('outlet_id', $outlet['id'])->whereDate('created_at', date('Y-m-d'))->get()->count();
+      $order_counter = Order::where('outlet_id', $outlet['id'])->get()->count();
 
       $order_id = Helpers::generateOrderId($outlet_code, date('dmY'), $order_counter + 1);
     }else{

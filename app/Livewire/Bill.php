@@ -14,7 +14,7 @@ class Bill extends Component
     public function render()
     {
         $table = Helpers::getTableId();
-        $this->counter = Order::where(['table_id' => $table, 'on_going' => 1])->count();
+        $this->counter = Order::where(['table_id' => $table, 'on_going' => 1])->whereDate('created_at', date('Y-m-d'))->orderBy('created_at', 'desc')->get()->count();
         return view('livewire.bill');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CPU\Helpers;
+use App\Models\Callback;
 use App\Models\Category;
 use App\Models\Food;
 use App\Models\Order;
@@ -190,7 +191,6 @@ class PageController extends Controller
     public function payment_success($type, $order_id){
         $order = Order::find($order_id);
         if($order){
-            $order->payment_method = $type;
             $order->payment_status = 'paid';
             $order->save();
 

@@ -51,15 +51,23 @@
         @enderror
         <div class="form-check">
             <label class="form-check-label w-100" for="now">
-                Pay Now
-                <input class="form-check-input" type="radio" name="payment_method" id="now" value="now"
+                <div class="fw-bold mb--20">
+                    Pay Now (QRIS & BCA Virtual Account)
+                </div>
+                <br>
+                You can pay on phone after order
+                <input class="form-check-input mt--5" type="radio" name="payment_method" id="now" value="now"
                     wire:model="payment">
             </label>
         </div>
         <div class="form-check mt-2">
             <label class="form-check-label w-100" for="later">
-                Pay Later
-                <input class="form-check-input" type="radio" name="payment_method" id="later" value="later"
+                <div class="fw-bold mb--20">
+                    Pay Later (Cash, Flazz, & Debit Card)
+                </div>
+                <br>
+                You pay at the cashier after the meal
+                <input class="form-check-input mt--5" type="radio" name="payment_method" id="later" value="later"
                     wire:model="payment">
             </label>
         </div>

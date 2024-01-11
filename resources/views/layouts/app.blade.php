@@ -483,6 +483,13 @@
     a {
         text-decoration: none !important;
     }
+    .mb--20{
+      margin-bottom: -20px;
+    }
+
+    .mt--5{
+      margin-top: -5px;
+    }
   </style>
 
   @livewireStyles

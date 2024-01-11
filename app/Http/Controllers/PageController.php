@@ -6,6 +6,7 @@ use App\CPU\Helpers;
 use App\Models\Category;
 use App\Models\Food;
 use App\Models\Order;
+use App\Models\Table;
 use Illuminate\Http\Request;
 use Xendit\Configuration;
 use Xendit\Invoice;
@@ -19,7 +20,12 @@ class PageController extends Controller
 
         session()->put('table', $table_token);
 
-        return view('pages.home.welcome');
+        $table = Table::with('outlet')->where('token', $table_token)->first();
+        $outlet = $table['outlet'];
+
+        $data['outlet'] = $outlet;
+
+        return view('pages.home.welcome', $data);
     }
 
     public function menu($type)

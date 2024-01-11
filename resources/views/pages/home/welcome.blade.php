@@ -10,6 +10,16 @@
       <div class="img-wrapper pt-4 text-center">
         <img src="{{ asset('assets/images/logo.png') }}" height="60px" alt="">
       </div>
+      <div class="outlet-data pt-4">
+        <div class="page-title text-center text-capitalize">
+          <h5>
+            {{ $outlet['name'] }}
+          </h5>
+          <h6 class="pt-4">
+            {{ $outlet['address'] }}
+          </h6>
+        </div>
+      </div>
       <div class="page-content text-center">
         <h6>Please Choose</h6>
         <div class="d-flex align-items-center justify-content-evenly mt-3">

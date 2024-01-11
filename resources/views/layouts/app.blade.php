@@ -173,11 +173,11 @@
     .page-welcome{
       height: 80vh;
       align-items: center;
-      padding-top: 15vh
+      padding-top: 5vh
     }
 
     .page-welcome .page-content{
-      padding-top: 10vh;
+      padding-top: 5vh;
     }
 
     .page-content h6{

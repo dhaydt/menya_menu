@@ -15,76 +15,84 @@ use Carbon\Carbon;
 
 class Helpers
 {
-  public static function getTaxOutlet(){
+  public static function getTaxOutlet()
+  {
     $table_code = Helpers::getTable();
 
     $table = Table::where('token', $table_code)->first();
 
     $tax = Outlet::find($table['outlet_id'])['tax'];
-    
+
     return $tax;
   }
-  
-  public static function getServiceOutlet(){
+
+  public static function getServiceOutlet()
+  {
     $table_code = Helpers::getTable();
 
     $table = Table::where('token', $table_code)->first();
-    
+
     $service = Outlet::find($table['outlet_id'])['service_charge'];
 
     return $service;
   }
 
-  public static function getTax($tax, $total){
-    $hasil = $tax/100 * $total;
+  public static function getTax($tax, $total)
+  {
+    $hasil = $tax / 100 * $total;
     return $hasil;
   }
-  public static function getOutletPrice($id){
+  public static function getOutletPrice($id)
+  {
     $table_id = Helpers::getTableId();
     $table = Table::find($table_id);
 
-    if($table){
+    if ($table) {
       $outlet_id = $table['outlet_id'];
 
       $price = Price::where(['outlet_id' => $outlet_id, 'food_id' => $id])->orderBy('created_at', 'desc')->first();
 
-      if($price){
+      if ($price) {
         return $price['price'];
-      }else{
+      } else {
         $food = Food::find($id);
 
         return $food['price'];
       }
-    }else{
+    } else {
       return view('welcome');
     }
-
-    
   }
-  
-  public static function getOutlet($id){
+
+  public static function getOutlet($id)
+  {
     $outlet = Outlet::find($id);
 
-    if($outlet){
-      $data = ['name' => $outlet['name'], 
-            'address' => $outlet['address'], 
-            'phone' => $outlet['phone']];
+    if ($outlet) {
+      $data = [
+        'name' => $outlet['name'],
+        'address' => $outlet['address'],
+        'phone' => $outlet['phone']
+      ];
 
       return $data;
     }
-    
-    $data = ['name' => 'Solaria rest area KM 177', 
-            'address' => 'Jl. Tol KM 97 Bandung Cikampek',
-            'phone' => '0812345678'];
+
+    $data = [
+      'name' => 'Solaria rest area KM 177',
+      'address' => 'Jl. Tol KM 97 Bandung Cikampek',
+      'phone' => '0812345678'
+    ];
 
     return $data;
   }
 
 
-  public static function dateFormat($date, $type){
-    if($type == 'date'){
+  public static function dateFormat($date, $type)
+  {
+    if ($type == 'date') {
       $formatted = Carbon::parse($date)->format('d-m-Y');
-    }else{
+    } else {
       $formatted = Carbon::parse($date)->format('d-m-Y H:i');
     }
     return $formatted;
@@ -95,13 +103,14 @@ class Helpers
     return session()->get('table');
   }
 
-  public static function getTableId(){
+  public static function getTableId()
+  {
 
     $table_code = Helpers::getTable();
 
     $table = Table::where('token', $table_code)->first();
 
-    if(!$table){
+    if (!$table) {
       return view('welcome');
     }
 
@@ -126,7 +135,29 @@ class Helpers
   {
     $code = $initial . str_pad($id, 6, "0", STR_PAD_LEFT);
 
-    return $code;
+    $check = Order::find($code);
+    if ($check) {
+      $date = date('s');
+
+      $check2 = Order::find($code . $date);
+
+      if ($check2) {
+        $date2 = date('is');
+
+        $check3 = Order::find($code . $date2);
+
+        if ($check3) {
+          return $code . date('his');
+        } else {
+          return $code . $date2;
+        }
+      } else {
+
+        return $code . $date;
+      }
+    } else {
+      return $code;
+    }
   }
 
   public static function generateOrder()
@@ -141,20 +172,20 @@ class Helpers
     $phone = session()->get('phone');
     $paymeny_type = session()->get('payment');
     $order_type = session()->get('type');
-    
+
     $payment_status = 'unpaid';
 
     $outlet = Outlet::find($table['outlet_id']);
     $date = date('dmY');
 
-    if($outlet){
+    if ($outlet) {
       $outlet_code = $outlet['code_order'] ?? 'LT';
       $order_counter = Order::where('outlet_id', $outlet['id'])->get()->count();
 
       $order_id = Helpers::generateOrderId($outlet_code, date('dmY'), $order_counter + 1);
-    }else{
+    } else {
       $outlet_code = 'LT';
-      $order_id = Helpers::generateOrderId('LT', $date, count(Order::all()) + 1);
+      $order_id = Helpers::generateOrderId('default', $date, count(Order::all()) + 1);
     }
 
 
@@ -217,7 +248,8 @@ class Helpers
     }
   }
 
-  public static function getConfig($type){
+  public static function getConfig($type)
+  {
     $config = Config::where('type', $type)->first();
 
     return $config;

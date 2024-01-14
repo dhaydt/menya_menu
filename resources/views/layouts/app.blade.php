@@ -16,6 +16,31 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    div:where(.swal2-container) div:where(.swal2-popup) {
+        width: 20em !important;
+        max-width: 30em !important;
+        padding: 0 0 0.25em;
+    }
+
+    div:where(.swal2-icon) {
+      width: 5em !important;
+      height: 5em !important;
+      margin: 0.5em auto 0.6em !important;
+    }
+
+    div:where(.swal2-container) h2:where(.swal2-title) {
+      padding: 0.1em 0 0 !important;
+      font-size: 1.275em !important;
+    }
+
+    div:where(.swal2-container) .swal2-html-container {
+      margin: 2px 0 !important;
+    }
+
+    div:where(.swal2-container) div:where(.swal2-actions) {
+      margin: 0.25em auto 0 !important;
+    }
+
     .main-container {
       /* background-color: #bbb; */
       min-height: 100vh;

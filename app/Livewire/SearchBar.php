@@ -19,7 +19,7 @@ class SearchBar extends Component
     public function search(){
         $res = Food::when($this->search, function($query){
             $query->where('name', 'like', '%'.$this->search.'%');
-        })->limit(10)->get()->pluck('name', 'id');
+        })->where('type', 'food')->limit(10)->get()->pluck('name', 'id');
 
         $this->result = $res;
     }

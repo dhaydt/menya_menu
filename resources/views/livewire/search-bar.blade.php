@@ -28,8 +28,20 @@
             Livewire.dispatch('search');
         }
         function hide(e) {
-            const result = document.getElementById('searchResult');
-            result.classList.add('d-none');
+            const delay = (delayInms) => {
+                return new Promise(resolve => setTimeout(resolve, delayInms));
+            };
+
+            const sample = async () => {
+                console.log('a');
+                console.log('waiting...')
+                let delayres = await delay(100);
+                console.log('b');
+                const result = document.getElementById('searchResult');
+                result.classList.add('d-none');
+            };
+
+            sample();
         }
 
         function search(){

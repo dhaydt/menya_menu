@@ -44,8 +44,21 @@
             sample();
         }
 
+        addEventListener("scroll", (event) => {
+            const searchBox = document.getElementById('searchResult');
+            if(searchBox.classList.contains('d-none')){
+
+            }else{
+                searchBox.classList.add('d-none');
+            }
+        });
+
         function search(){
             Livewire.dispatch('search');
+            const searchBox = document.getElementById('searchResult');
+            if(searchBox.classList.contains('d-none')){
+                searchBox.classList.remove('d-none');
+            }
         }
     </script>
 @endpush

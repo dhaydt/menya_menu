@@ -34,6 +34,32 @@
       margin-right: auto;
     }
 
+    .search-wrap{
+      position: relative;
+    }
+
+    .card-search-box{
+      position: absolute;
+      z-index: 99;
+      width: 87%;
+      left: 7%;
+      margin-top: -7px;
+    }
+
+    .search-wrap ul {
+      list-style-type: none;
+      padding: 0 10px;
+      margin-bottom: 10px;
+    }
+    .search-wrap ul li{
+      margin-top: 10px;
+      border-bottom: 1px solid #838383;
+    }
+    
+    .search-wrap ul li a{
+      color: #434343;
+    }
+
     .search-nav {
       width: 75%;
     }
@@ -136,14 +162,14 @@
 
     /* Catgeory food item */
     .card.item-category-card{
-      border-radius: 20px;
+      border-radius: 8px;
       border: 1px solid #b2b2b2;
       text-decoration: none;
       color: unset;
     }
     .card-category-wrapper{
       height: 170px;
-      border-radius: 20px 20px 0 0;
+      border-radius: 8px 8px 0 0;
       overflow: hidden;
     }
 
@@ -491,7 +517,6 @@
       margin-top: -5px;
     }
   </style>
-
   @livewireStyles
 </head>
 

@@ -12,11 +12,17 @@
     </div>
     <div class="card card-search-box d-none" id="searchResult" wire:ignore.self>
         <ul>
+            @if (count($result) > 0)
             @foreach ($result as $k => $r)
             <li>
                 <a href="{{ route('detail_menu', ['id' => $k]) }}">{{ ucwords($r) }}</a>
             </li>
             @endforeach
+            @else
+            <li>
+                No data found
+            </li>
+            @endif
         </ul>
     </div>
 </div>

@@ -72,7 +72,7 @@
             </label>
         </div>
     </div>
-    <div class="next-wrapper confirm-btn mb-5 px-2 d-flex align-items-center justify-content-center" style="margin-bottom: 50px !important;">
+    <div class="next-wrapper confirm-btn mb-5 px-2 d-flex align-items-center justify-content-center" style="margin-bottom: 80px !important;">
         <a href="javascript:" wire:click="confirmPayment" class="next-btn">{{ $text }}</a>
     </div>
 

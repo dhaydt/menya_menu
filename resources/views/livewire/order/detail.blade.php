@@ -150,7 +150,7 @@
                     Tax ({{ \App\CPU\Helpers::getTaxOutlet() }}%)
                 </div>
                 <div class="price">
-                    IDR. {{ $order['tax'] }}
+                    IDR. {{ number_format($order['tax']) }}
                 </div>
             </div>
             <div class="d-flex justify-content-between baris-harga">
@@ -158,7 +158,7 @@
                     Service Charge
                 </div>
                 <div class="price">
-                    IDR. {{ $order['service_charge'] }}
+                    IDR. {{ number_format($order['service_charge']) }}
                 </div>
             </div>
             <div class="d-flex justify-content-between baris-harga">
@@ -166,7 +166,7 @@
                     Total
                 </div>
                 <div class="price fw-bold">
-                    IDR. {{ $order['total'] }}
+                    IDR. {{ number_format($order['total']) }}
                 </div>
             </div>
         </div>

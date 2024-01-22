@@ -130,6 +130,7 @@
 
     .content-wrapper {
       margin-top: 55px;
+      margin-bottom: 80px;
     }
 
     @media(max-width: 600px) {

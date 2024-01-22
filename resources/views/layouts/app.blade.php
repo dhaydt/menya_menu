@@ -312,7 +312,7 @@
     }
 
     .add-cart-session{
-      position: absolute;
+      position: fixed;
       bottom: 10px;
       max-width: 590px;
 

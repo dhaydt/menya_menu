@@ -32,7 +32,7 @@
   <div class="owl-carousel owl-theme owl-banner">
     @foreach ($banner as $b)
     <a href="{{ route('banner', ['id' => $b['id']]) }}" onclick="showLoading()">
-      <img src="{{ env('BACKEND_URL').'/storage/'.$b['image'] }}" class="h-100 animate__backInRight" alt="">
+      <img src="{{ \App\CPU\Helpers::getBackendUrl($b['image']) }}" class="h-100 animate__backInRight" alt="">
     </a>
     {{-- <div>
       <img src="{{ asset('assets/images/banner/banner2.jpg') }}" class="h-100" alt="">

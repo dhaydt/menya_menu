@@ -147,18 +147,18 @@
             </div>
             <div class="d-flex justify-content-between baris-harga">
                 <div class="name me-3">
-                    Tax ({{ \App\CPU\Helpers::getTaxOutlet() }}%)
-                </div>
-                <div class="price">
-                    IDR. {{ number_format($order['tax']) }}
-                </div>
-            </div>
-            <div class="d-flex justify-content-between baris-harga">
-                <div class="name me-3">
                     Service Charge
                 </div>
                 <div class="price">
                     IDR. {{ number_format($order['service_charge']) }}
+                </div>
+            </div>
+            <div class="d-flex justify-content-between baris-harga">
+                <div class="name me-3">
+                    Tax ({{ \App\CPU\Helpers::getTaxOutlet() }}%)
+                </div>
+                <div class="price">
+                    IDR. {{ number_format($order['tax']) }}
                 </div>
             </div>
             <div class="d-flex justify-content-between baris-harga">

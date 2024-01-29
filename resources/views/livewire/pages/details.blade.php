@@ -38,11 +38,13 @@
                     <div class="extra-list">
                         @foreach ($lisTopping as $t)
                         <div class="form-check d-flex w-100 ps-0 pe-3 mt-2">
-                            <label class="form-check-label title-label" for="flexCheckDefault">
+                            <label class="form-check-label title-label" for="flexCheckDefault" style="max-width: 150px;">
                                 {{ $t->name }}
                             </label>
-                            <label class="ms-auto">IDR. {{ number_format($t->price) }}</label>
                             <label class="price-check d-flex ms-auto">
+                                <label for="" class="me-4 pe-4">
+                                    IDR. {{ number_format($t->price) }}
+                                </label>
                                 <input class="form-check-input" type="checkbox" value="false"  name="topping" wire:model="topping.{{ $t->id }}" wire:click="$dispatch('call')">
                             </label>
                         </div>

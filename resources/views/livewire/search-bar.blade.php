@@ -4,9 +4,9 @@
             <span class="input-group-text">
                 <i class="fa-solid fa-search"></i>
             </span>
-            <div class="form-floating">
-                <input type="text" class="form-control p-1" id="floatingInputGroup1" onkeydown="search()" placeholder="Search menu" wire:model="search" onclick="active()" onfocusout="hide()">
-                <label for="floatingInputGroup1" class="p-2">Search</label>
+            <div class="input-groups">
+                <input type="text" class="form-control p-1" id="floatingInputGroup1" onkeydown="search()" placeholder="Search" wire:model="search" onclick="active()" onfocusout="hide()">
+                <label for="floatingInputGroup2" id="label_search" class="p-2">Search</label>
             </div>
         </div>
     </div>
@@ -31,6 +31,8 @@
         function active(e) {
             const result = document.getElementById('searchResult');
             result.classList.remove('d-none');
+            const label = document.getElementById('label_search');
+            label.classList.add('d-none');
             Livewire.dispatch('search');
         }
         function hide(e) {

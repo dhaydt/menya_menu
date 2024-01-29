@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="page-content text-center">
-        <h6>Please Choose</h6>
+        <h6 class="text-center">Please Choose</h6>
         <div class="d-flex align-items-center justify-content-evenly mt-3">
           <a href="{{ route('menu', ['type' => 'dine_in']) }}" class="card-single" onclick="showLoading()">
             <div class="icon-wrapper">

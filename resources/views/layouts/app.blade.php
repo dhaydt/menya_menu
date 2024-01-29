@@ -111,8 +111,12 @@
       right: -8px;
     }
 
-    .search-nav .form-floating,
-    .search-nav .form-floating input {
+    .text-center{
+      text-align: center;
+    }
+
+    .search-nav .input-groups,
+    .search-nav .input-groups input {
       height: 40px;
     }
 
@@ -131,6 +135,7 @@
     .content-wrapper {
       margin-top: 55px;
       margin-bottom: 80px;
+      min-height: 100vh;
     }
 
     @media(max-width: 600px) {
@@ -233,7 +238,7 @@
     }
 
     .page-content h6{
-      margin-right: 46vw;
+      /* margin-right: 46vw; */
       color: var(--font-secondary-color)
     }
 
@@ -400,7 +405,7 @@
 
     /* payment method */
     .payment-method{
-      min-height: 92vh;
+      min-height: 100vh;
     }
     .payment-information .form-check{
       background-color: #dfdfdf;

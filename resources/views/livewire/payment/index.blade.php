@@ -4,11 +4,11 @@
         <div class="font-content mt-1 d-flex justify-content-between align-items-center">Sub Total <div class="price">
                 IDR. {{ number_format($subtotal) }}</div>
         </div>
+        <div class="font-content mt-1 d-flex justify-content-between align-items-center">Service Charge <div
+            class="price">IDR. {{ number_format($service) }}</div>
+        </div>
         <div class="font-content mt-1 d-flex justify-content-between align-items-center">Tax ({{ $taxPercent }})<div
                 class="price">IDR. {{ number_format($tax) }}</div>
-        </div>
-        <div class="font-content mt-1 d-flex justify-content-between align-items-center">Service Charge <div
-                class="price">IDR. {{ number_format($service) }}</div>
         </div>
         <div class="font-content fw-bold mt-1 d-flex justify-content-between align-items-center">Total <div
                 class="price">IDR. {{ number_format($total) }}</div>

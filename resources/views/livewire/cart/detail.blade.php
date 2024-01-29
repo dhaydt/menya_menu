@@ -106,18 +106,18 @@
         </div>
         <div class="d-flex justify-content-end baris-harga">
             <div class="name me-3">
-                Tax ({{ $subtotal['tax'] }} %)
-            </div>
-            <div class="price">
-                IDR. {{ number_format(\App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal'])))  }}
-            </div>
-        </div>
-        <div class="d-flex justify-content-end baris-harga">
-            <div class="name me-3">
                 Service Charge
             </div>
             <div class="price">
                 IDR. {{ number_format($subtotal['service']) }}
+            </div>
+        </div>
+        <div class="d-flex justify-content-end baris-harga">
+            <div class="name me-3">
+                Tax ({{ $subtotal['tax'] }} %)
+            </div>
+            <div class="price">
+                IDR. {{ number_format(\App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal'])))  }}
             </div>
         </div>
         <div class="d-flex justify-content-end baris-harga">

@@ -27,12 +27,14 @@
     margin: 5px 4px;
   }
 </style>
+{{-- {{ dd($banner) }} --}}
 <div class="carousel-wrapper">
   <div class="owl-carousel owl-theme owl-banner">
-    <div>
-      <img src="{{ asset('assets/images/banner/banner.png') }}" class="h-100 animate__backInRight" alt="">
-    </div>
-    <div>
+    @foreach ($banner as $b)
+    <a href="{{ route('banner', ['id' => $b['id']]) }}" onclick="showLoading()">
+      <img src="{{ env('BACKEND_URL').'/storage/'.$b['image'] }}" class="h-100 animate__backInRight" alt="">
+    </a>
+    {{-- <div>
       <img src="{{ asset('assets/images/banner/banner2.jpg') }}" class="h-100" alt="">
     </div>
     <div>
@@ -49,7 +51,9 @@
     </div>
     <div>
       <img src="{{ asset('assets/images/banner/banner.png') }}" class="h-100" alt="">
-    </div>
+    </div> --}}
+    @endforeach
+
   </div>
 </div>
 

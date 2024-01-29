@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CPU\Helpers;
+use App\Models\Banner;
 use App\Models\Callback;
 use App\Models\Category;
 use App\Models\Food;
@@ -32,11 +33,12 @@ class PageController extends Controller
     public function menu($type)
     {
         $table = Helpers::getTable();
+        $data['banner'] = Banner::where('is_active', 1)->orderBy('updated_at', 'desc')->get();
 
         if ($table) {
             session()->put('type', $type);
 
-            return view('pages.home.index');
+            return view('pages.home.index', $data);
         }
 
         return view('welcome');
@@ -51,6 +53,20 @@ class PageController extends Controller
             $data['id'] = $id;
 
             return view('pages.details.index', $data);
+        }
+
+        return view('welcome');
+    }
+    
+    public function banner($id)
+    {
+        $table = Helpers::getTable();
+
+        if ($table) {
+            $data['title'] = "Detail Banner";
+            $data['id'] = $id;
+
+            return view('pages.details.banner', $data);
         }
 
         return view('welcome');

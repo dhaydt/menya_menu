@@ -47,6 +47,7 @@ Route::get('/migrate', function () {
 
 Route::get('/menu/{type}', [PageController::class, 'menu'])->name('menu');
 Route::get('/category/{id}', [PageController::class, 'category'])->name('category');
+Route::get('/banner/{id}', [PageController::class, 'banner'])->name('banner');
 Route::get('/detail/{id}', [PageController::class, 'detail'])->name('detail_menu');
 Route::get('/cart-detail', [PageController::class, 'cart_detail'])->name('cart_detail');
 Route::get('/payment-method', [PageController::class, 'payment_method'])->name('payment-method');

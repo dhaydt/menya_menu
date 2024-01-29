@@ -1,6 +1,6 @@
 <div class="w-100 search-wrap">
     <div class="search-nav p-2 d-flex align-items-center w-100">
-        <div class="input-group">
+        <div class="input-group" style="flex-wrap: unset !important;">
             <span class="input-group-text">
                 <i class="fa-solid fa-search"></i>
             </span>

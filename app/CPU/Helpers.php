@@ -15,6 +15,21 @@ use Carbon\Carbon;
 
 class Helpers
 {
+  public static function countServiceCharge($service, $subtotal){
+    $hasil = $service / 100 * $subtotal;
+    return $hasil;
+  }
+
+  public static function roundPrice($total){
+    // dd($total);
+    $round = ceil(round($total)/100)*100;
+    $pembulatan = $round-$total;
+
+    return [
+      "total" => $round,
+      "pembulatan" => $pembulatan
+    ];
+  }
   public static function getTaxOutlet()
   {
     $table_code = Helpers::getTable();
@@ -205,6 +220,7 @@ class Helpers
       $order->tax = $group['tax'];
       $order->service_charge = $group['service_charge'];
       $order->total = $group['total'];
+      $order->pembulatan = $group['pembulatan'];
       $order->outlet_id = $table['outlet_id'];
       $order->note = $group['note'];
       $order->on_going = 1;

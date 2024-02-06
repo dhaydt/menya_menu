@@ -106,10 +106,11 @@
         </div>
         <div class="d-flex justify-content-end baris-harga">
             <div class="name me-3">
-                Service Charge
+                Service Charge ({{ $subtotal['service'] }}%)
             </div>
             <div class="price">
-                IDR. {{ number_format($subtotal['service']) }}
+                @php($servicess = \App\CPU\Helpers::countServiceCharge($subtotal['service'], array_sum($subtotal['subtotal'])))
+                IDR. {{ number_format($servicess) }}
             </div>
         </div>
         <div class="d-flex justify-content-end baris-harga">
@@ -117,15 +118,27 @@
                 Tax ({{ $subtotal['tax'] }} %)
             </div>
             <div class="price">
-                IDR. {{ number_format(\App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal'])))  }}
+                @php($taxs = \App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal']) + $servicess))
+                IDR. {{ number_format($taxs) }}
             </div>
         </div>
+        @php($totals = round(array_sum($subtotal['subtotal'])) + round($servicess) + round($taxs))
+        @php($rounded = \App\CPU\Helpers::roundPrice($totals))
+        <div class="d-flex justify-content-end baris-harga">
+            <div class="name me-3">
+                Pembulatan
+            </div>
+            <div class="price">
+                IDR. {{ number_format($rounded['pembulatan']) }}
+            </div>
+        </div>
+
         <div class="d-flex justify-content-end baris-harga">
             <div class="name me-3 fw-bold">
                 Total
             </div>
             <div class="price fw-bold">
-                IDR. {{ number_format(array_sum($subtotal['subtotal']) + \App\CPU\Helpers::getTax($subtotal['tax'], array_sum($subtotal['subtotal'])) + $subtotal['service']) }}
+                IDR. {{ number_format($rounded['total']) }}
             </div>
         </div>
     </div>

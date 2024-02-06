@@ -20,6 +20,7 @@ class CartGroup extends Model
         'total',
         'note',
         'table_id',
+        'pembulatan'
     ];
 
     /**

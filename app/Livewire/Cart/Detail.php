@@ -167,15 +167,23 @@ class Detail extends Component
 
     public function generateOrder(){
 
-        $total = array_sum($this->subtotal['subtotal']) + $this->service + Helpers::getTax($this->tax, array_sum($this->subtotal['subtotal']));
-
+        
         $table = Helpers::getTable();
+        
+        $serv = round(Helpers::countServiceCharge($this->subtotal['service'], array_sum($this->subtotal['subtotal'])));
+        $taxs = round(Helpers::getTax($this->subtotal['tax'], array_sum($this->subtotal['subtotal']) + $serv));
+        $total = array_sum($this->subtotal['subtotal']) + $serv + $taxs;
+
+        $rounded = Helpers::roundPrice($total);
 
         $group = CartGroup::where('table_id', $table)->first();
-        $group->total = $total;
+        $group->total = $rounded['total'];
+        $group->pembulatan = $rounded['pembulatan'];
         $group->note = $this->note;
-        $group->tax = Helpers::getTax($this->tax, array_sum($this->subtotal['subtotal']));
-        $group->service_charge = $this->service;
+        // $group->tax = Helpers::getTax($this->tax, array_sum($this->subtotal['subtotal']));
+        $group->tax = $taxs;
+        $group->service_charge = $serv;
+        // $group->service_charge = $this->service;
         $group->save();
 
         foreach ($this->cart as $k => $c) {

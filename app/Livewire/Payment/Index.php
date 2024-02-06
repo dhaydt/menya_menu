@@ -19,6 +19,7 @@ class Index extends Component
     public $table;
     public $taxPercent;
     public $text;
+    public $pembulatan;
     public $type;
 
     public $role = [
@@ -49,6 +50,8 @@ class Index extends Component
             $this->total = $group['total'];
             
             $this->tax = $group['tax'];
+
+            $this->pembulatan = $group['pembulatan'];
             
             $this->service = $group['service_charge'];
             

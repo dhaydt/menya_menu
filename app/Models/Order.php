@@ -31,6 +31,7 @@ class Order extends Model
         'outlet_id',
         'note',
         'on_going',
+        'pembulatan'
     ];
 
     /**

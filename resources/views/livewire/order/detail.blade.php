@@ -142,7 +142,7 @@
                     Sub total
                 </div>
                 <div class="price">
-                    IDR. {{ number_format($order['total'] - $order['tax'] - $order['serivice_charge']) }}
+                    IDR. {{ number_format($order['total'] - $order['tax'] - $order['service_charge'] - $order['pembulatan']) }}
                 </div>
             </div>
             <div class="d-flex justify-content-between baris-harga">

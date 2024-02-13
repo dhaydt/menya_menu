@@ -126,7 +126,7 @@
         @php($rounded = \App\CPU\Helpers::roundPrice($totals))
         <div class="d-flex justify-content-end baris-harga">
             <div class="name me-3">
-                Pembulatan
+                Rounding
             </div>
             <div class="price">
                 IDR. {{ number_format($rounded['pembulatan']) }}

@@ -163,7 +163,7 @@
             </div>
             <div class="d-flex justify-content-between baris-harga">
                 <div class="name me-3">
-                    Pembulatan
+                    Rounding
                 </div>
                 <div class="price">
                     IDR. {{ number_format($order['pembulatan']) }}

@@ -66,7 +66,7 @@
         <div class="form-check mt-2">
             <label class="form-check-label w-100" for="later">
                 <div class="fw-bold mb--20">
-                    Pay Later (Cash, Flazz, & Debit Card)
+                    Pay Later (EDC BCA, EDC MANDIRI)
                 </div>
                 <br>
                 You pay at the cashier after the meal

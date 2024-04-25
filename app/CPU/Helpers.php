@@ -203,6 +203,18 @@ class Helpers
       $order_id = Helpers::generateOrderId('default', $date, count(Order::all()) + 1);
     }
 
+    $check_order_id = Order::where('order_id',$order_id)->get();
+
+    if(count($check_order_id) > 0){
+      $order_id = $order_id . '_' .count($check_order_id) + 1;
+    }
+    
+    $check_order_item = OrderDetail::where('order_id',$order_id)->get();
+
+    if(count($check_order_item) > 0){
+      $order_id = $order_id . '_' .count($check_order_item) + 1;
+    }
+
 
 
     if ($group && $table) {

@@ -203,7 +203,7 @@ class Helpers
       $order_id = Helpers::generateOrderId('default', $date, count(Order::all()) + 1);
     }
 
-    $check_order_id = Order::where('order_id',$order_id)->get();
+    $check_order_id = Order::where('id', $order_id)->get();
 
     if(count($check_order_id) > 0){
       $order_id = $order_id . '_' .count($check_order_id) + 1;

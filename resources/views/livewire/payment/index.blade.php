@@ -44,11 +44,11 @@
         </select>
     </div>
 
-    <div class="border-line"></div>
+    {{-- <div class="border-line"></div> --}}
     <div class="container py-2 payment-information">
-        <div class="font-description mb-2">
+        <!-- <div class="font-description mb-2">
             Optional Payment
-        </div>
+        </div> -->
         @error('payment')
         <small class="text-danger" style="font-size: 10px">{{ $message }}</small>
         @enderror
@@ -63,7 +63,7 @@
                     wire:model="payment">
             </label>
         </div> -->
-        <div class="form-check mt-2">
+        <!-- <div class="form-check mt-2">
             <label class="form-check-label w-100" for="later">
                 <div class="fw-bold mb--20">
                     Pay Later (EDC BCA, EDC MANDIRI)
@@ -73,7 +73,7 @@
                 <input class="form-check-input mt--5" type="radio" name="payment_method" id="later" value="later"
                     wire:model="payment">
             </label>
-        </div>
+        </div> -->
     </div>
     <div class="next-wrapper confirm-btn mb-5 px-2 d-flex align-items-center justify-content-center" style="margin-bottom: 80px !important;">
         <a href="javascript:" wire:click="confirmPayment" class="next-btn">{{ $text }}</a>
@@ -105,9 +105,11 @@
 </div>
 @push('scripts')
 <script>
+    $(document).ready(function(){
+        @this.set('payment', 'later')
+    })
     Livewire.on('confirmed', () => {
         console.log('called');
-
         var myModal = new bootstrap.Modal(document.getElementById('modalConfirm'), {
             keyboard: false
         })

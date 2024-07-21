@@ -52,7 +52,7 @@
         @error('payment')
         <small class="text-danger" style="font-size: 10px">{{ $message }}</small>
         @enderror
-        {{-- <div class="form-check">
+        <!-- <div class="form-check">
             <label class="form-check-label w-100" for="now">
                 <div class="fw-bold mb--20">
                     Pay Now (QRIS & BCA Virtual Account)
@@ -62,7 +62,7 @@
                 <input class="form-check-input mt--5" type="radio" name="payment_method" id="now" value="now"
                     wire:model="payment">
             </label>
-        </div> --}}
+        </div> -->
         <div class="form-check mt-2">
             <label class="form-check-label w-100" for="later">
                 <div class="fw-bold mb--20">
